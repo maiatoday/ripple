@@ -1,3 +1,5 @@
 ofxXmlSettings
 ofxVectorGraphics
 ofxUI
+ofxOpenCv
+ofxFX

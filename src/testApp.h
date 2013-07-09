@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxOpenCv.h"
+#include "ofURLFileLoader.h"
+#include "ofxFX.h"
 
 class testApp : public ofBaseApp{
 
@@ -19,4 +22,28 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		ofVideoGrabber cam;
+		ofxCvColorImage cvImgColor;
+		ofxCvGrayscaleImage cvImgGrayscale;
+		ofxCvContourFinder contourFinder;
+		vector<ofPolyline> polylines, smoothed, resampled;
+		vector<ofRectangle> boundingBoxes;
+		vector<ofPoint> closestPoints;
+		vector<unsigned int> closestIndices;
+		int camWidth, camHeight;
+
+		int threshold;
+
+		void urlResponse(ofHttpResponse & response);
+
+		ofImage img;
+		bool loading;
+
+		//----------------- visuals
+	    bool toggle;
+	    int counter;
+	    ofxMask maskLayers;
+		ofImage bigMask;
+		void clearLayer(int i);
+
 };
