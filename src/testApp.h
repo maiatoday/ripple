@@ -4,6 +4,7 @@
 #include "ofxOpenCv.h"
 #include "ofURLFileLoader.h"
 #include "ofxFX.h"
+#include "ofxThreadedImageSaver.h"
 
 class testApp : public ofBaseApp{
 
@@ -31,6 +32,7 @@ class testApp : public ofBaseApp{
 		vector<ofPoint> closestPoints;
 		vector<unsigned int> closestIndices;
 		int camWidth, camHeight;
+		float scaleWidth, scaleHeight;
 
 		int threshold;
 
@@ -40,10 +42,17 @@ class testApp : public ofBaseApp{
 		bool loading;
 
 		//----------------- visuals
+
+		int width;
+		int height;
 	    bool toggle;
 	    int counter;
 	    ofxMask maskLayers;
 		ofImage bigMask;
 		void clearLayer(int i);
+
+	    bool doVideoWrite;
+	    ofImage saveScreen;
+	    ofxThreadedImageSaver TIS;
 
 };
